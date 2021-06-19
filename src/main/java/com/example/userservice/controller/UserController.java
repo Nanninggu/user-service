@@ -29,19 +29,19 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/health_check") //#랜덤포트의 포트번호를 표기해주기 위한 코드
+    @GetMapping("/user-service/health_check") //#랜덤포트의 포트번호를 표기해주기 위한 코드
     public String status() {
         return String.format("It's Working in User Service on PORT %s",
         env.getProperty("local.server.port"));
     }
 
-    @GetMapping("/welcome")
+    @GetMapping("/user-service/welcome")
     public String welcome() {
 //        return env.getProperty("greeting.message"); //application.yml 파일의 환경을 읽어서 가져온다.
         return greeting.getMessage(); //vo패키지의 Greeting 클래스에 담긴 메세지 내용을 가져온다.
     }
 
-    @PostMapping("/users")
+    @PostMapping("/user-service/users")
     public ResponseEntity<ResponseUser> createUser(@RequestBody RequestUser user) {
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
