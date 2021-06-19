@@ -8,9 +8,12 @@ spring:
 eureka:
   instance:
     # 인스턴스 id를 동적으로 할당받아 인스턴스 id와 port번호를 출력
-    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   clinet:
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
+
+greeting:
+  message: Welcome to the Simple E-commerce.
