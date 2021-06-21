@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user-service/") //url:포트번호/맵핑정보
+@RequestMapping("/") //url:포트번호/맵핑정보
 public class UserController {
     private Environment env;
     private UserService userService;
@@ -58,7 +58,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseUser); //반환값을 201번 성공코드로 받기
     }
 
-    @GetMapping("/users/")
+    @GetMapping("/users")
     public ResponseEntity<List<ResponseUser>> getUsers() {
         Iterable<UserEntity> userList = userService.getUserByAll();
 
