@@ -35,8 +35,11 @@ public class UserController {
 
     @GetMapping("/health_check") //#랜덤포트의 포트번호를 표기해주기 위한 코드
     public String status() {
-        return String.format("It's Working in User Service on PORT %s",
-        env.getProperty("local.server.port"));
+        return String.format("It's Working in User Service"
+                + ", port(local.server.port)=" + env.getProperty("local.server.port")
+                + ", port(server.port)=" + env.getProperty("server.port")
+                + ", token secret=" + env.getProperty("token.secret")
+                + ", token expiration time=" + env.getProperty("token.expiration_time"));
     }
 
     @GetMapping("/welcome")

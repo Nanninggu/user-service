@@ -15,9 +15,9 @@ import javax.servlet.Filter;
 @Configuration
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
+    private Environment env;
     private UserService userService;
     private BCryptPasswordEncoder bCcryptPasswordEncoder;
-    private Environment env;
 
     public WebSecurity(Environment env, UserService userService, BCryptPasswordEncoder bCcryptPasswordEncoder) {
         this.env = env;
@@ -29,6 +29,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 //        http.authorizeRequests().antMatchers("/users/**").permitAll();
+        http.authorizeRequests().antMatchers("/actuator/**").permitAll();
         http.authorizeRequests().antMatchers("/**")
                 .hasIpAddress("114.206.30.229") // <- ip 변경
                 .and()
