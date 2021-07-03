@@ -11,6 +11,5 @@ public class ResponseOrder {
     private Integer unitPrice;
     private Integer totalPrice;
     private Date createdAt;
-
     private String oderId;
 }
